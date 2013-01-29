@@ -1,4 +1,4 @@
-(ns cltrace.math_test
+(ns cltrace.math-test
   (:use clojure.test
         cltrace.math))
 
