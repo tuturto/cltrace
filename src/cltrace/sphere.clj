@@ -42,11 +42,19 @@
    )
   )
 
-(defmethod closest-intersection :sphere
+(defn
+  ^{:private true}
+  intersection-distance
   [sphere ray]
   (let [b (calculate-b sphere ray) c (calculate-c sphere ray)]
     (let [discriminant (calculate-discriminant b c)]
-      (min (filter fn[x] (> x 0) (intersections b discriminant)))
+      (reduce min (filter (fn[x] (> x 0)) (intersections b discriminant)))
       )
     )
-)
+  )
+
+(defmethod closest-intersection :sphere
+  [sphere ray]
+  (scale (intersection-distance sphere ray)
+         (map + (nth ray 0) (nth ray 1)))
+  )
