@@ -48,13 +48,17 @@
   [sphere ray]
   (let [b (calculate-b sphere ray) c (calculate-c sphere ray)]
     (let [discriminant (calculate-discriminant b c)]
-      (reduce min (filter (fn[x] (> x 0)) (intersections b discriminant)))
+      (if (< discriminant 0) nil
+        (reduce min (filter (fn[x] (> x 0)) (intersections b discriminant))))
       )
     )
   )
 
-(defmethod closest-intersection :sphere
+(defmethod 
+  ^{:doc "Get closest intersection of ray and string. If no intersection is found, returns nil"}
+  closest-intersection :sphere
   [sphere ray]
-  (scale (intersection-distance sphere ray)
-         (map + (nth ray 0) (nth ray 1)))
+  (let [distance (intersection-distance sphere ray)]
+    (if (nil? distance) nil
+  		(map + (nth ray 0) (scale distance (nth ray 1)))))
   )
