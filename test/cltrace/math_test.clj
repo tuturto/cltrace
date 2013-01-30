@@ -11,6 +11,12 @@
 (deftest test-cross-simple
     (is (= [-1 2 -1] (cross-product [1 2 3] [2 3 4]))))
 
+(deftest test-vector-length-short
+  (is (= 2 (vector-length '(2)))))
+
+(deftest test-vector-lenght-2
+  (is (= 5 (vector-length '(3 4)))))
+
 (deftest test-vector-length
   (is (= 5 (vector-length '(5 0 0)))))
 
