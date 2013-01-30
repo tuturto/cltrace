@@ -20,5 +20,5 @@
 (deftest test-vector-length
   (is (= 5 (vector-length '(5 0 0)))))
 
-(deftest test-normalize-vector-1
-  (is (= [1 0 0] (normalize-vector '(5 0 0)))))
+(deftest test-normalize-vector
+  (is (= '(1 0 0) (normalize-vector '(5 0 0)))))
