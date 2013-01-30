@@ -3,4 +3,5 @@
   :url "github.com/tuturto/cltrace"
   :license {:name "GNU General Public License"
             :url "http://www.gnu.org/licenses/gpl-3.0.html"}
-  :dependencies [[org.clojure/clojure "1.4.0"]])
+  :dependencies [[org.clojure/clojure "1.4.0"]
+                 [org.clojure/clojure-contrib "1.2.0"]])
