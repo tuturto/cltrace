@@ -7,7 +7,7 @@
   ^{:private true}
   calculate-b
   [sphere ray]
-  (* 2 (dot 
+  (* 2 (dot-product 
       (map - (nth ray 0) (nth sphere 1)) 
       (nth ray 1))
      )
@@ -17,7 +17,7 @@
   ^{:private true}
   calculate-c
   [sphere ray]
-  (- (dot 
+  (- (dot-product 
 	(map - (nth ray 0) (nth sphere 1))
 	(map - (nth ray 0) (nth sphere 1))
  )
