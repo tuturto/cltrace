@@ -60,5 +60,5 @@
   [sphere ray]
   (let [distance (intersection-distance sphere ray)]
     (if (nil? distance) nil
-  		(map + (nth ray 0) (scale distance (nth ray 1)))))
+  		(map + (nth ray 0) (scale-vector distance (nth ray 1)))))
   )
