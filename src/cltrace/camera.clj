@@ -6,8 +6,8 @@
     (conj (vec (map / (map - (get camera-settings :point-1)
                 (get camera-settings :point-0)
                 )
-         (get camera-settings :resolution)))
-          0)
+         (map dec (get camera-settings :resolution))))
+          0.0)
     )
   )
 
