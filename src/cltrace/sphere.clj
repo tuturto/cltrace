@@ -55,7 +55,7 @@
   )
 
 (defmethod 
-  ^{:doc "Get closest intersection of ray and string. If no intersection is found, returns nil"}
+  "Get closest intersection of ray and string. If no intersection is found, returns nil"
   closest-intersection :sphere
   [sphere ray]
   (let [distance (intersection-distance sphere ray)]

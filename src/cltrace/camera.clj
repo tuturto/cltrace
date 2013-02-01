@@ -1,6 +1,7 @@
 (ns cltrace.camera)
 
 (defn calculate-delta
+  ^{:private true}
   [camera]
   (let [camera-settings (nth camera 1)] 
     (conj (vec (map / (map - (get camera-settings :point-1)
@@ -12,6 +13,7 @@
   )
 
 (defn get-grid
+  "return matrix of points defining projection grid of the camera"
   [camera]
   (let [camera-settings (nth camera 1)
         delta (calculate-delta camera)
