@@ -25,3 +25,13 @@
              (get camera-settings :point-0))))
     )
   )
+
+(defn get-camera-rays
+  "return list of normalized rays originating from camera, through grid"
+  [camera]
+
+  (list (list
+         (list (list 0.0 0.0 0.0) (list 0.0 0.0 10.0))
+         )
+        )
+  )
