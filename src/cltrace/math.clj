@@ -25,3 +25,8 @@
   (let [length (vector-length v)]
     (map (fn [x] (/ x length)) v))
   )
+
+(defn vector-direction
+  [start end]
+  (map - end start)
+  )

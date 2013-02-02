@@ -1,4 +1,5 @@
-(ns cltrace.camera)
+(ns cltrace.camera
+  (:use cltrace.math))
 
 (defn calculate-delta
   ^{:private true}
@@ -29,9 +30,12 @@
 (defn get-camera-rays
   "return list of normalized rays originating from camera, through grid"
   [camera]
-
-  (list (list
-         (list (list 0.0 0.0 0.0) (list 0.0 0.0 10.0))
-         )
-        )
+	(let [grid (get-grid camera)
+        camera-settings (nth camera 1)]
+    (let [origo (get camera-settings :location)]
+      (map (fn [y]
+             (map (fn [x]
+                    (list origo (normalize-vector (vector-direction origo x)))) y)) grid)
+      )
+    )
   )
