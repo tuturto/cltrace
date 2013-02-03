@@ -34,3 +34,11 @@
                               (get-object-ray-intersections ray scene)
     )
   )
+
+(defn get-colour-of-intersection
+  "get colour of ray-object intersection"
+  [ray object-intersection scene]
+  (texture-colour (object-texture 
+                   (nth object-intersection 0))
+                  )
+  )
