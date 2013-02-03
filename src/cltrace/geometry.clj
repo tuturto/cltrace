@@ -6,3 +6,9 @@
   )
 
 (defmulti closest-intersection select-shape)
+
+(defn ray-start
+  "get start of the ray"
+  [ray]
+  (nth ray 0)
+  )

@@ -22,3 +22,11 @@
 
 (deftest test-normalize-vector
   (is (= '(1 0 0) (normalize-vector '(5 0 0)))))
+
+(deftest test-distance
+  (list
+   (is (= (distance [0.0 0.0 0.0] [5.0 0.0 0.0]) 5.0))
+   (is (= (distance [2.0 0.0 0.0] [-2.0 0.0 0.0]) 4.0))
+   (is (= (distance [2.0 2.0 0.0] [-1.0 6.0 0.0]) 5.0))
+   )
+  )

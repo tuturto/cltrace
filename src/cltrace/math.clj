@@ -20,6 +20,13 @@
   (sqrt (reduce + (map (fn [x] (expt x 2)) v)))
   )
 
+(defn distance
+  "get distance between two points in space"
+  [start end]
+  (vector-length (map (fn [x y] (- x y)) 
+                      start end))
+  )
+
 (defn normalize-vector
   [v]
   (let [length (vector-length v)]
