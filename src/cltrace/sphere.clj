@@ -48,8 +48,14 @@
   [sphere ray]
   (let [b (calculate-b sphere ray) c (calculate-c sphere ray)]
     (let [discriminant (calculate-discriminant b c)]
-      (if (< discriminant 0) nil
-        (reduce min (filter (fn[x] (> x 0)) (intersections b discriminant))))
+      (if (< discriminant 0) 
+        nil
+        (let [positive-distances (filter (fn[x] (> x 0)) (intersections b discriminant))]
+          (if (> (count positive-distances) 0)
+            (reduce min positive-distances)
+            nil)
+          )
+        )
       )
     )
   )

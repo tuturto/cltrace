@@ -30,8 +30,13 @@
 (defn get-closest-object-ray-intersection
   "cast ray and return closest intersection point and object from scene, nil for no hit"
   [ray scene]
-    (get-closest-intersection (ray-start ray)
-                              (get-object-ray-intersections ray scene)
+  (let [intersections (get-object-ray-intersections ray scene)]
+    (if (not= (count intersections) 0)
+      (get-closest-intersection (ray-start ray)
+                                intersections
+                                )
+      nil
+      )
     )
   )
 
@@ -41,4 +46,15 @@
   (texture-colour (object-texture 
                    (nth object-intersection 0))
                   )
+  )
+
+(defn get-colour-of-ray
+  "get colour of ray"
+  [ray scene]
+  (let [intersection (get-closest-object-ray-intersection ray scene)]
+    (if (= intersection nil)
+      (nth (get scene :background) 1)
+      intersection
+      )
+    )
   )
