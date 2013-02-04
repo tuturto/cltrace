@@ -2,37 +2,31 @@
 
 (defn select-shape
   [shape %params]
-  (keyword (first shape))
-  )
+  (keyword (first shape)))
 
 (defmulti closest-intersection select-shape)
 
 (defn ray-start
   "get start of the ray"
   [ray]
-  (nth ray 0)
-  )
+  (nth ray 0))
 
 (defn object-geometry
   "Get geometry of an object"
   [object]
-  (get object :geometry)
-  )
+  (:geometry object))
 
 (defn object-texture
   "get texture of an object"
   [object]
-  (get object :texture)
-  )
+  (:texture object))
 
 (defn texture-colour
   "get base colour of an texture"
   [texture]
-  (get (get texture :plain-colour) :colour)
-  )
+  (:colour (:plain-colour texture)))
 
 (defn texture-diffuse
   "get diffuse of an texture"
   [texture]
-  (get (get texture :plain-colour) :diffuse)
-  )
+  (:diffuse (:plain-colour texture)))

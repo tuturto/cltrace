@@ -17,23 +17,19 @@
 
 (defn vector-length
   [v]
-  (sqrt (reduce + (map (fn [x] (expt x 2)) v)))
-  )
+  (sqrt (reduce + (map (fn [x] (expt x 2)) v))))
 
 (defn distance
   "get distance between two points in space"
   [start end]
   (vector-length (map (fn [x y] (- x y)) 
-                      start end))
-  )
+                      start end)))
 
 (defn normalize-vector
   [v]
   (let [length (vector-length v)]
-    (map (fn [x] (/ x length)) v))
-  )
+    (map (fn [x] (/ x length)) v)))
 
 (defn vector-direction
   [start end]
-  (map - end start)
-  )
+  (map - end start))
