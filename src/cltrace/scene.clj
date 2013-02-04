@@ -54,7 +54,7 @@
   (let [intersection (get-closest-object-ray-intersection ray scene)]
     (if (= intersection nil)
       (nth (get scene :background) 1)
-      intersection
+      (list 255 255 255)
       )
     )
   )
