@@ -1,6 +1,15 @@
 (ns cltrace.camera
   (:use cltrace.math))
 
+(defn index-to-coordinates
+  [width height index]
+   [(rem index width)
+    (quot index width)])
+
+(defn coordinates-to-index
+  [width height x y]
+   (+ (* y width) x))
+
 (defn calculate-delta
   ^{:private true}
   [camera]
@@ -15,12 +24,15 @@
   [camera]
   (let [camera-settings (nth camera 1)
         delta (calculate-delta camera)
+        width (nth (:resolution camera-settings) 0)
+        height (nth (:resolution camera-settings) 1)
+        planar-coordinates (partial index-to-coordinates width height)
         z (nth (get camera-settings :point-0) 2)]
-    (for [y (range (nth (:resolution camera-settings) 1))]
-      (for [x (range (nth (:resolution camera-settings) 0))]
+    (for [index (range (* width height))]
         (map + 
-             (map * [x y z] delta) 
-             (get camera-settings :point-0))))))
+             (map * (conj (planar-coordinates index) z)
+                  delta)
+             (get camera-settings :point-0)))))
 
 (defn get-camera-rays
   "return list of normalized rays originating from camera, through grid"
@@ -28,5 +40,5 @@
 	(let [grid (get-grid camera)
         camera-settings (nth camera 1)
         origo (:location camera-settings)]
-      (map (fn [y] (map (fn [x]
-                          [origo (normalize-vector (vector-direction origo x))]) y)) grid)))
+      (map (fn [index]
+             [origo (normalize-vector (vector-direction origo index))]) grid)))

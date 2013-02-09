@@ -10,8 +10,8 @@
                                                   :point-1 '(10.0 10.0 10.0),
                                                   :resolution '(11 11))))]
     (list
-     (is (= (nth (nth grid 10) 10) (list 10.0 10.0 10.0)))
-     (is (= (nth (nth grid 0) 0) (list 0.0 0.0 10.0)))
+     (is (= (nth grid 120) (list 10.0 10.0 10.0)))
+     (is (= (nth grid 0) (list 0.0 0.0 10.0)))
      )
     )
   )
@@ -22,11 +22,11 @@
                                                   :point-1 '(10.0 10.0 10.0),
                                                   :resolution '(11 11))))]
     (list
-     (is (= (nth (nth rays 5) 5) (list 
-                                  '(5.0 5.0 0.0)
+     (is (= (nth rays 60) (list 
+                                  [5.0 5.0 0.0]
                                   (normalize-vector '(0.0 0.0 1.0)))))
-     (is (= (nth (nth rays 10) 10) (list
-                                    '(5.0 5.0 0.0)
+     (is (= (nth rays 120) (list
+                                    [5.0 5.0 0.0]
                                     (normalize-vector '(5.0 5.0 10.0)))))
      )
     )
