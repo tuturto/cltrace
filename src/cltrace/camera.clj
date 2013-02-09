@@ -29,10 +29,10 @@
         planar-coordinates (partial index-to-coordinates width height)
         z (nth (get camera-settings :point-0) 2)]
     (for [index (range (* width height))]
-        (map + 
-             (map * (conj (planar-coordinates index) z)
-                  delta)
-             (get camera-settings :point-0)))))
+      [(map + 
+            (map * (conj (planar-coordinates index) z) delta)
+            (get camera-settings :point-0))
+       (planar-coordinates index)])))
 
 (defn get-camera-rays
   "return list of normalized rays originating from camera, through grid"
@@ -41,4 +41,5 @@
         camera-settings (nth camera 1)
         origo (:location camera-settings)]
       (map (fn [index]
-             [origo (normalize-vector (vector-direction origo index))]) grid)))
+             [[origo (normalize-vector (vector-direction origo (nth index 0)))]
+              (nth index 1)]) grid)))
