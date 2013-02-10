@@ -23,4 +23,4 @@
 
 (def image-matrix (render scene))
 
-(save-rendered-image image-matrix "c:/temp/demo.png")
+(save-rendered-image image-matrix "c:/temp/demo.png" 255 255)
